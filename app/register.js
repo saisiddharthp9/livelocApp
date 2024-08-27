@@ -147,7 +147,7 @@ export default function Register() {
         >
           <Picker.Item label="User" value="User" />
           <Picker.Item label="Conductor" value="Conductor" />
-          <Picker.Item label="Depot Manager" value="Depot manager" />
+          <Picker.Item label="Depot Manager" value="Depot Manager" />
           <Picker.Item label="Supplier" value="Supplier" />
           <Picker.Item label="Other" value="other" />
         </Picker>
