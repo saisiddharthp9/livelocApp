@@ -2,7 +2,7 @@
     "name": "Bus Tracking App",
     "short_name": "BusTracker",
     "description": "A live bus tracking app for different roles including end users, suppliers, admins, depot managers, conductors, and drivers.",
-    "start_url": "/?source=app",
+    "start_url": "/index",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#2196F3",

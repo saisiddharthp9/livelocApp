@@ -6,6 +6,7 @@ import {
   Button,
   StyleSheet,
   Modal,
+  FlatList,
 } from "react-native";
 import { Link } from "expo-router";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
@@ -13,14 +14,10 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import mapboxgl from "mapbox-gl";
-// import * as Facebook from "expo-auth-session/providers/facebook";
+import Navbar from "../Features/Navbar";
+import { useRouter } from "expo-router";
 
 // const MAPPLS_API_KEY = "c7850c2e067688d30e2fadcd4793935c";
-
-// const [fbRequest, fbResponse, fbPromptAsync] = Facebook.useAuthRequest({
-//   clientId: "YOUR_FACEBOOK_APP_ID",
-//   responseType: ResponseType.Token,
-// });
 
 mapboxgl.accessToken =
   "pk.eyJ1Ijoic2Fpc2lkZGhwOSIsImEiOiJjbTA0eXJhc2cwN2ZoMmpwdjUwdXF5YmN1In0.NzOp3Qbvsq9rLE-7sXgDgw";
@@ -28,11 +25,39 @@ mapboxgl.accessToken =
 const User = () => {
   const mapContainer = useRef(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const [routesModalVisible, setRoutesModalVisible] = useState(false);
-  const [routes, setRoutes] = useState([]);
   const [selectedSource, setSelectedSource] = useState("");
   const [selectedDestination, setSelectedDestination] = useState("");
   const [navbarVisible, setNavbarVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+
+  const data = [
+    "Bus 101",
+    "Bus 102",
+    "Bus 103",
+    "Express 200",
+    "City 300",
+    "Night Bus 400",
+  ];
+
+  const handleSearch = (text) => {
+    setSearchQuery(text);
+    if (text) {
+      const filtered = data.filter((item) =>
+        item.toLowerCase().includes(text.toLowerCase())
+      );
+      setFilteredData(filtered);
+    } else {
+      setFilteredData([]);
+    }
+  };
+
+  const handleSelectItem = (item) => {
+    setSearchQuery(item);
+    setFilteredData([]); // Hide the list after selection.
+  };
+
+  const router = useRouter();
 
   useEffect(() => {
     const map = new mapboxgl.Map({
@@ -42,7 +67,7 @@ const User = () => {
       zoom: 8,
     });
 
-    const marker = new mapboxgl.Marker()
+    const marker = new mapboxgl.Marker({ anchor: "center" })
       .setLngLat([-122.4324, 37.78825]) // Position of the marker
       .addTo(map);
 
@@ -68,6 +93,7 @@ const User = () => {
         <TouchableOpacity onPress={() => setNavbarVisible(true)}>
           <Icon name="bars" size={20} color="#fff" />
         </TouchableOpacity>
+
         <Text style={{ color: "#fff", fontWeight: "bolder" }}>
           Welcome, {`( User )`}
         </Text>
@@ -97,19 +123,35 @@ const User = () => {
 
       <View>
         <View style={styles.mapContainer} ref={mapContainer}></View>
-
+        <br />
         <View style={styles.searchbox}>
           <TextInput
             style={{
-              border: "1px solid black",
-              borderRadius: "15px",
-              width: "70%",
+              borderWidth: 1,
+              borderColor: "black",
+              borderRadius: 15,
+              width: "85%",
               padding: 5,
             }}
             placeholder="Search for Buses"
+            value={searchQuery}
+            onChangeText={handleSearch}
           />
-          &nbsp;
-          <Icon name="search" size={25} />
+
+          <Icon name="search" size={25} style={{ marginLeft: 10 }} />
+          {filteredData.length > 0 && (
+            <View style={styles.dropdown}>
+              <FlatList
+                data={filteredData}
+                renderItem={({ item }) => (
+                  <TouchableOpacity onPress={() => handleSelectItem(item)}>
+                    <Text style={styles.item}>{item}</Text>
+                  </TouchableOpacity>
+                )}
+                keyExtractor={(item) => item}
+              />
+            </View>
+          )}
         </View>
         <br />
         <View style={styles.buttonContainer}>
@@ -151,11 +193,17 @@ const User = () => {
         </View>
         <br />
         <View style={styles.buttonContainer}>
-          <Link href="/payment">
-            <Button title="Confirm Booking" />
-          </Link>
+          <Button
+            title="Confirm Booking"
+            onPress={() => router.push("/payment")}
+          />
         </View>
       </View>
+
+      <Navbar
+        navbarVisible={navbarVisible}
+        setNavbarVisible={setNavbarVisible}
+      />
 
       {/* Notification Center Modal */}
       <Modal
@@ -187,34 +235,6 @@ const User = () => {
           </View>
         </View>
       </Modal>
-
-      {/* Navbar Modal */}
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={navbarVisible}
-        onRequestClose={() => setNavbarVisible(false)}
-      >
-        <View style={styles.navbarOverlay}>
-          <View style={styles.sideNavbar}>
-            <TouchableOpacity onPress={() => setNavbarVisible(false)}>
-              <Text style={styles.closeNavbar}>Close</Text>
-            </TouchableOpacity>
-            <Link href="/profile" style={styles.navItem}>
-              Account Profile
-            </Link>
-            <Link href="/favorites" style={styles.navItem}>
-              Favorites
-            </Link>
-            <Link href="/settings" style={styles.navItem}>
-              Settings
-            </Link>
-            <Link href="/help" style={styles.navItem}>
-              Help
-            </Link>
-          </View>
-        </View>
-      </Modal>
     </SafeAreaView>
   );
 };
@@ -226,6 +246,17 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
   },
+  dropdown: {
+    position: "absolute",
+    top: 45, // Adjust based on input height
+    left: 0,
+    right: 0,
+    backgroundColor: "white",
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 5,
+    zIndex: 1,
+  },
   header: {
     flexDirection: "row",
     backgroundColor: "#25292e",
@@ -236,8 +267,6 @@ const styles = StyleSheet.create({
   mapContainer: {
     height: 300,
     width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
     position: "relative",
     overflow: "hidden",
   },
@@ -249,6 +278,7 @@ const styles = StyleSheet.create({
   searchbox: {
     flexDirection: "row",
     justifyContent: "center",
+    position: "relative",
   },
   pickerContainer: {
     marginBottom: 10,
@@ -299,37 +329,5 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
-  },
-
-  // Navbar Modal styles
-  sideNavbar: {
-    width: "80%",
-    height: "100%",
-    backgroundColor: "white",
-    padding: 20,
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 2,
-      height: 0,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  navItem: {
-    marginVertical: 15,
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#25292e",
-  },
-  closeNavbar: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#2196F3",
-    marginBottom: 20,
   },
 });

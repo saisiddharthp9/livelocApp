@@ -12,7 +12,7 @@ import { ResponseType } from "expo-auth-session";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("User");
   const [isChecked, setIsChecked] = useState(false);
   // const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -32,8 +32,6 @@ export default function Login() {
 
   const handleFacebookLoginSuccess = async (accessToken) => {
     console.log("Facebook login successful. Access Token:", accessToken);
-    // You can store the accessToken in AsyncStorage or use it to fetch user data
-    // navigateBasedOnRole(); // Uncomment and implement navigation if needed
     await AsyncStorage.setItem("facebookAccessToken", accessToken);
 
     // Navigate based on role or directly to the user page
@@ -47,7 +45,7 @@ export default function Login() {
   useEffect(() => {
     const loadUserInfo = async () => {
       try {
-        const userInfo = await AsyncStorage.getItem("userInfo");
+        const userInfo = await AsyncStorage.getItem(`user_${email}`);
         if (userInfo) {
           const { email, password } = JSON.parse(userInfo);
           setEmail(email);
@@ -70,38 +68,35 @@ export default function Login() {
     navigateBasedOnRole();
   };
 
-  // const handleLoginError = (error) => {
-  //   console.error('Login failed:', error);
-  //   Alert.alert('Login failed', 'Please try again.');
-  // };
+  const handleLogin = async () => {
+    try {
+      const userInfoString = await AsyncStorage.getItem(`user_${email}`);
+      if (!userInfoString) {
+        Alert.alert("Error", "No user found with this email");
+        return;
+      }
 
-  // const navigateBasedOnRole = () => {
-  //   setLoading(true);
-  //   switch (role) {
-  //     case 'User':
-  //       router.push('/User/userPage');
-  //       break;
-  //     case 'Conductor':
-  //       router.push('/Conductor/conductorPage');
-  //       break;
-  //     case 'Depot manager':
-  //       router.push('/DepotManager/depotPage');
-  //       break;
-  //     case 'Supplier':
-  //       router.push('/Supplier/supplierPage');
-  //       break;
-  //     default:
-  //       router.push('/Other/otherPage');
-  //       break;
-  //   }
-  //   setLoading(false);
-  // };
+      const userInfo = JSON.parse(userInfoString);
 
-  const handleLogin = () => {
-    if (email && password) {
-      console.log("Login Successfully");
-    } else {
-      Alert.alert("Invalid Input", "Please enter both email and password.");
+      if (userInfo.password === password) {
+        Alert.alert("Success", `Welcome, ${userInfo.role}`);
+        // Navigate based on user role
+        if (userInfo.role === "User") {
+          router.push("/User/userPage");
+        } else if (userInfo.role === "Conductor") {
+          router.push("/Conductor/conductorPage");
+        } else if (userInfo.role === "Depot Manager") {
+          router.push("/Depot Manager/depotPage");
+        } else if (userInfo.role === "Supplier") {
+          router.push("/Supplier/supplierPage");
+        } else {
+          router.push("/otherHome");
+        }
+      } else {
+        Alert.alert("Error", "Incorrect password");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
     }
   };
 
@@ -125,11 +120,12 @@ export default function Login() {
             secureTextEntry
             placeholder="Enter your Password"
             style={styles.input}
+            value={password}
             onChangeText={setPassword}
           />
         </View>
         <View style={styles.checkboxContainer}>
-          <Text>Remember Me</Text>
+          <Text>Remember Me</Text>&nbsp;
           <CheckBox value={isChecked} onValueChange={toggleCheckbox} />
         </View>
         <Text style={styles.textlabel}>Logging in as:</Text>
@@ -146,12 +142,14 @@ export default function Login() {
 
         <View style={styles.finalButtonsContainer}>
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Link href="/User/userPage">Login</Link>
-            {/* <Link href="Conductor/conductorPage">Login</Link> */}
+            Login
           </TouchableOpacity>
-
-          <TouchableOpacity style={styles.button}>
-            <Link href="/register">Create Account</Link>
+          &nbsp;
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push("/register")}
+          >
+            Create Account
           </TouchableOpacity>
         </View>
         <br />
@@ -222,9 +220,9 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
     marginBottom: 10,
-    width: "120px",
+    width: "100%",
   },
   pickerContainer: {
     marginBottom: 20,
@@ -240,7 +238,7 @@ const styles = StyleSheet.create({
   },
   socialButtonsContainer: {
     flexDirection: "row",
-    width: "100px",
+    width: 100,
     justifyContent: "space-between",
   },
   footer: {

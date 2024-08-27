@@ -2,13 +2,37 @@ import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Link } from "expo-router";
 import React, { useState, useEffect } from "react";
+import { FontDisplay } from "expo-font";
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((registration) => {
+        console.log(
+          "Service Worker registered with scope:",
+          registration.scope
+        );
+      })
+      .catch((error) => {
+        console.error("Service Worker registration failed:", error);
+      });
+  });
+}
 
 export default function Home() {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-        <Text style={{ color: "#fff", fontSize: "35px", fontWeight: "bold" }}>
-          Welcome !
+        <Text
+          style={{
+            color: "#ffcc00",
+            fontSize: "35px",
+            fontWeight: "bold",
+            fontStyle: "Italic",
+          }}
+        >
+          BusTracker
         </Text>
         <br />
         <Link href="/login" style={styles.link}>
