@@ -2,7 +2,9 @@
   "expo": {
     "scheme": "acme",
     "web": {
-      "bundler": "metro"
+      "bundler": "metro",
+      "favicon":"./app/Assets/Apocalypse.png",
+      "manifest": "./manifest.json"
     },
     "plugins": [
       "expo-router"
