@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Link } from "expo-router";
 import React, { useState, useEffect } from "react";
 import { FontDisplay } from "expo-font";
+// import io from "socket.io-client";
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -20,9 +21,32 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-export default function Home() {
+export default function App() {
+  // const [socket, setSocket] = useState(null);
+  // const [message, setMessage] = useState("");
+  // const [chat, setChat] = useState([]);
+
+  // useEffect(() => {
+  //   const newSocket = io("http://localhost:3000"); // Adjust the URL to your backend
+  //   setSocket(newSocket);
+
+  //   newSocket.on("message", (message) => {
+  //     setChat((prevChat) => [...prevChat, message]);
+  //   });
+
+  //   return () => newSocket.close();
+  // }, []);
+
+  // const sendMessage = () => {
+  //   if (socket) {
+  //     socket.emit("message", message);
+  //     setChat((prevChat) => [...prevChat, message]);
+  //     setMessage("");
+  //   }
+  // };
+
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View>
         <Text
           style={{
@@ -45,7 +69,18 @@ export default function Home() {
           Sign Up
         </Link>
       </View>
-    </SafeAreaView>
+      {/* <View>
+        <TextInput
+          value={message}
+          onChangeText={setMessage}
+          placeholder="Type a message"
+        />
+        <Button title="Send" onPress={sendMessage} />
+        {chat.map((msg, index) => (
+          <Text key={index}>{msg}</Text>
+        ))}
+      </View> */}
+    </View>
   );
 }
 

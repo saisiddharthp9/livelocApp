@@ -127,9 +127,6 @@ const User = () => {
         <View style={styles.searchbox}>
           <TextInput
             style={{
-              borderWidth: 1,
-              borderColor: "black",
-              borderRadius: 15,
               width: "85%",
               padding: 5,
             }}
@@ -243,8 +240,11 @@ export default User;
 
 const styles = StyleSheet.create({
   pageContainer: {
+    flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
+    backgroundColor: "#ddd",
+    padding: 5,
   },
   dropdown: {
     position: "absolute",
@@ -266,25 +266,42 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     height: 300,
-    width: "100%",
-    position: "relative",
+    width: "90%",
+    margin: "auto",
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    shadowColor: "#000",
     overflow: "hidden",
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginBottom: 10,
+    marginBottom: 20,
   },
   searchbox: {
     flexDirection: "row",
     justifyContent: "center",
-    position: "relative",
+    alignItems: "center",
+    margin: 20,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    borderRadius: 15,
+    padding: 10,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
   },
   pickerContainer: {
-    marginBottom: 10,
-    width: "100%",
+    margin: "auto",
+    width: "90%",
     justifyContent: "space-around",
     flexDirection: "row",
+    padding: 10,
   },
 
   // Modal styles

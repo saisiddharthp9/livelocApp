@@ -11,6 +11,13 @@ import { Foundation } from "@expo/vector-icons";
 const Navbar = ({ navbarVisible, setNavbarVisible }) => {
   const router = useRouter();
 
+  const navigateToAccount = () => {
+    router.push("/Services/account");
+  };
+  const navigateToSettings = () => {
+    router.push("/Services/settings");
+  };
+
   return (
     <Modal
       animationType="slide"
@@ -23,15 +30,19 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
           <TouchableOpacity onPress={() => setNavbarVisible(false)}>
             <Text style={styles.closeNavbar}>Close</Text>
           </TouchableOpacity>
-          <Link href="/account" style={styles.navItem}>
-            Account Profile <Icon name="user" size={20} />
-          </Link>
+          <TouchableOpacity onPress={navigateToAccount}>
+            <Text style={styles.navItem}>
+              Account Profile <Icon name="user" size={20} />
+            </Text>
+          </TouchableOpacity>
           <Link href="/favorites" style={styles.navItem}>
             Favorites <MaterialIcons name="stars" size={20} />
           </Link>
-          <Link style={styles.navItem} href="/settings">
-            Settings <Fontisto name="player-settings" size={20} />
-          </Link>
+          <TouchableOpacity onPress={navigateToSettings}>
+            <Text style={styles.navItem}>
+              Settings <Fontisto name="player-settings" size={20} />
+            </Text>
+          </TouchableOpacity>
           <Link href="./SOS" style={styles.navItem}>
             SOS <Foundation name="clipboard-notes" size={20} />
           </Link>
@@ -54,7 +65,7 @@ const styles = StyleSheet.create({
   sideNavbar: {
     width: "80%",
     height: "100%",
-    backgroundColor: "white",
+    backgroundColor: "#E1E1E1",
     padding: 20,
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
@@ -73,12 +84,12 @@ const styles = StyleSheet.create({
     marginVertical: 15,
     fontSize: 18,
     fontWeight: "bold",
-    color: "orange",
+    color: "#f88d5e",
   },
   closeNavbar: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#2196F3",
-    marginBottom: 20,
+    marginBottom: 15,
   },
 });
