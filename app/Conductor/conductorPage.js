@@ -50,6 +50,9 @@ const styles = StyleSheet.create({
   pageContainer: {
     flexDirection: "column",
     justifyContent: "space-between",
+    backgroundColor: "#ddd",
+    padding: 5,
+    marginBottom: 10,
   },
   header: {
     flexDirection: "row",
