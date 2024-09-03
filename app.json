@@ -3,7 +3,7 @@
     "scheme": "acme",
     "web": {
       "bundler": "metro",
-      "favicon":"./app/Assets/Apocalypse.png",
+      "favicon": "./app/Assets/Apocalypse.png",
       "manifest": "./manifest.json"
     },
     "plugins": [
@@ -22,6 +22,9 @@
         "projectId": "1909530a-ddf7-4b73-94d8-45b45d399e0a"
       }
     },
-    "owner": "saisiddhp9"
+    "owner": "saisiddhp9",
+    "android": {
+      "package": "com.saisiddhp9.livelocapp"
+    }
   }
 }
