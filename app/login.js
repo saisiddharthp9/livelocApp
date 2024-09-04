@@ -9,16 +9,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Facebook from "expo-auth-session/providers/facebook";
 import { ResponseType } from "expo-auth-session";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyASTu5gW798H_R3_w14Nu86tK-SGPPv8SI",
-  authDomain: "geo-tracking-app-b345f.firebaseapp.com",
-  projectId: "geo-tracking-app-b345f",
-  storageBucket: "geo-tracking-app-b345f.appspot.com",
-  messagingSenderId: "23640937370",
-  appId: "1:23640937370:web:ec5f70c15d8f31e9bae023",
-  measurementId: "G-1NE12D690T",
-};
-
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
