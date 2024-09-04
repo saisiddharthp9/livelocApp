@@ -1,5 +1,5 @@
-import { View, StyleSheet } from "react-native";
-import { Platform } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
+
 import React from "react";
 
 // const MAPPLS_API_KEY = "c7850c2e067688d30e2fadcd4793935c";
@@ -22,7 +22,7 @@ const MapView = () => {
       <script>
         function initialize() {
           var map = new mappls.Map('map', {
-            center: { lat: 28.7041, lng: 77.1025 }, // Set your desired initial location
+            center: { lat: 28.7041, lng: 77.1025 },
             zoom: 12,
           });
         }
@@ -36,13 +36,28 @@ const MapView = () => {
   `;
 
   return (
-    <iframe
-      src={`data:text/html,${encodeURIComponent(htmlContent)}`}
-      width="100%"
-      height="50%"
-      style={{ borderRadius: 10 }}
-    />
+    <View style={styles.container}>
+      <iframe
+        src={`data:text/html,${encodeURIComponent(htmlContent)}`}
+        style={styles.iframe}
+      />
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+  },
+  iframe: {
+    borderRadius: 10,
+    margin: "auto",
+    border: "1px solid black",
+    width: "100%",
+    height: "100%",
+  },
+});
 
 export default MapView;

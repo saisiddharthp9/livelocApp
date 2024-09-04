@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
     // flexDirection: "column",
+    justifyContent: "center",
     backgroundColor: "#ddd",
     padding: 5,
     marginBottom: 10,
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     border: 1,
     borderRadius: 5,
-    padding: 10,
+    padding: 5,
   },
   formInput: {
     padding: 5,
