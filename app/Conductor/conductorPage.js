@@ -1,13 +1,17 @@
-import { Text, View, SafeAreaView, StyleSheet } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
-
+import MapView from "../Features/MapView";
+import { Pressable, Button } from "react-native";
 const conductorDashboard = () => {
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+
   return (
-    <SafeAreaView style={styles.pageContainer}>
+    <View style={styles.pageContainer}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => setNavbarVisible(true)}>
           <Icon name="bars" size={20} color="#fff" />
@@ -38,7 +42,26 @@ const conductorDashboard = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaView>
+      <MapView />
+      <View style={styles.formContainer}>
+        <TextInput
+          placeholder="Enter the Starting Point"
+          value={from}
+          onChangeText={setFrom}
+          style={styles.formInput}
+        />
+
+        <TextInput
+          placeholder="Enter the Destination"
+          value={to}
+          onChangeText={setTo}
+          style={styles.formInput}
+        />
+      </View>
+      <Pressable>
+        <Button title="Start Journey" />
+      </Pressable>
+    </View>
   );
 };
 
@@ -46,8 +69,8 @@ export default conductorDashboard;
 
 const styles = StyleSheet.create({
   pageContainer: {
-    flexDirection: "column",
-    justifyContent: "space-between",
+    flex: 1,
+    // flexDirection: "column",
     backgroundColor: "#ddd",
     padding: 5,
     marginBottom: 10,
@@ -58,5 +81,21 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     justifyContent: "space-between",
+  },
+  formContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    border: 1,
+    borderRadius: 5,
+    padding: 10,
+  },
+  formInput: {
+    padding: 5,
+    width: "60%",
+    borderColor: "#ccc",
+    borderWidth: 1,
+    marginBottom: 10,
+    borderRadius: 5,
+    backgroundColor: "#fff",
   },
 });

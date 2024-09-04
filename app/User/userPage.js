@@ -17,8 +17,6 @@ import mapboxgl from "mapbox-gl";
 import Navbar from "../Features/Navbar";
 import { useRouter } from "expo-router";
 
-// const MAPPLS_API_KEY = "c7850c2e067688d30e2fadcd4793935c";
-
 mapboxgl.accessToken =
   "pk.eyJ1Ijoic2Fpc2lkZGhwOSIsImEiOiJjbTA0eXJhc2cwN2ZoMmpwdjUwdXF5YmN1In0.NzOp3Qbvsq9rLE-7sXgDgw";
 
