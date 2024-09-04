@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View } from "react-native";
-import EntryPoint from "./index";
+import EntryPoint from "./app/index";
 import firebase from "firebase/app";
 import "firebase/auth";
 
@@ -35,8 +35,6 @@ const firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
-
-//connection string for mongodb : mongodb+srv://dbSaiSiddh:<db_password>@cluster0.ql9oi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
 export default function App() {
   return (

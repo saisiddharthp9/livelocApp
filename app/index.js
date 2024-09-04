@@ -1,8 +1,6 @@
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { StyleSheet, Text, View } from "react-native";
 import { Link } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { FontDisplay } from "expo-font";
 
 export default function EntryPoint() {
   return (
