@@ -4,22 +4,6 @@ import { Link } from "expo-router";
 import React, { useState, useEffect } from "react";
 import { FontDisplay } from "expo-font";
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/service-worker.js")
-      .then((registration) => {
-        console.log(
-          "Service Worker registered with scope:",
-          registration.scope
-        );
-      })
-      .catch((error) => {
-        console.error("Service Worker registration failed:", error);
-      });
-  });
-}
-
 export default function EntryPoint() {
   return (
     <View style={styles.container}>

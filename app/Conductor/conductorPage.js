@@ -4,8 +4,6 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Picker } from "@react-native-picker/picker";
-import mapboxgl from "mapbox-gl";
 
 const conductorDashboard = () => {
   return (

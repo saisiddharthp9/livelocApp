@@ -103,7 +103,7 @@ export default function Login() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.title}>:: Login to Enter ::</Text>
+        <Text style={styles.title}>:: Login ::</Text>
         <br />
         <View style={styles.inputContainer}>
           <Text style={styles.textlabel}>Email:</Text>
@@ -112,6 +112,7 @@ export default function Login() {
             style={styles.input}
             value={email}
             onChangeText={setEmail}
+            autoCapitalize="none"
           />
         </View>
         <View style={styles.inputContainer}>
@@ -127,17 +128,6 @@ export default function Login() {
         <View style={styles.checkboxContainer}>
           <Text>Remember Me</Text>&nbsp;
           <CheckBox value={isChecked} onValueChange={toggleCheckbox} />
-        </View>
-        <Text style={styles.textlabel}>Logging in as:</Text>
-        <View style={styles.pickerContainer}>
-          <Picker selectedValue={role} onValueChange={setRole}>
-            <Picker.Item label="User" value="User" />
-            <Picker.Item label="Conductor" value="Conductor" />
-            <Picker.Item label="Depot Manager" value="Depot manager" />
-            <Picker.Item label="Supplier" value="Supplier" />
-            <Picker.Item label="Other" value="other" />
-          </Picker>
-          <Text>Selected: {role}</Text>
         </View>
 
         <View style={styles.finalButtonsContainer}>
@@ -192,6 +182,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   formContainer: {
+    border: "1px solid #25292e",
+    borderRadius: 10,
     padding: 20,
     width: "80%",
     alignItems: "center",
