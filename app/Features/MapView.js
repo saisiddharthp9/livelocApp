@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   iframe: {
     borderRadius: 10,
     border: "1px solid black",
-    width: "90%",
+    width: "100%",
     height: "100%",
   },
 });
