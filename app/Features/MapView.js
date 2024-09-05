@@ -53,9 +53,8 @@ const styles = StyleSheet.create({
   },
   iframe: {
     borderRadius: 10,
-    margin: "auto",
     border: "1px solid black",
-    width: "100%",
+    width: "90%",
     height: "100%",
   },
 });

@@ -42,7 +42,9 @@ const conductorDashboard = () => {
           </TouchableOpacity>
         </View>
       </View>
+
       <MapView />
+
       <View style={styles.formContainer}>
         <TextInput
           placeholder="Enter the Starting Point"
