@@ -1,13 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  Text,
-  View,
-  SafeAreaView,
-  Button,
-  StyleSheet,
-  Modal,
-  FlatList,
-} from "react-native";
+import { Text, View, Button, StyleSheet, Modal, FlatList } from "react-native";
 import { Link } from "expo-router";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -75,7 +67,7 @@ const User = () => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.pageContainer}>
+    <View style={styles.pageContainer}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => setNavbarVisible(true)}>
           <Icon name="bars" size={20} color="#fff" />
@@ -219,7 +211,7 @@ const User = () => {
           </View>
         </View>
       </Modal>
-    </SafeAreaView>
+    </View>
   );
 };
 
