@@ -1,10 +1,11 @@
 import React from "react";
 import { Text, View } from "react-native";
+import Header from "../Features/Header";
 
 const Supplier = () => {
   return (
     <View>
-      <Text>Supplier Page</Text>
+      <Header />
     </View>
   );
 };
