@@ -74,17 +74,6 @@ const User = () => {
     return () => map.remove();
   }, []);
 
-  //   const handleViewRoutes = () => {
-  //     // Filter routes based on selected source and destination
-  //     const filteredRoutes = busRoutes.routes.filter(
-  //       (route) =>
-  //         (selectedSource ? route.source === selectedSource : true) &&
-  //         (selectedDestination ? route.destination === selectedDestination : true)
-  //     );
-  //     setRoutes(filteredRoutes);
-  //     setRoutesModalVisible(true);
-  //   };
-
   return (
     <SafeAreaView style={styles.pageContainer}>
       <View style={styles.header}>

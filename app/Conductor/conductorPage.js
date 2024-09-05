@@ -1,48 +1,20 @@
 import { Text, View, StyleSheet } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 import MapView from "../Features/MapView";
 import { Pressable, Button } from "react-native";
+import Header from "../Features/Header";
+
 const conductorDashboard = () => {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
 
   return (
     <View style={styles.pageContainer}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => setNavbarVisible(true)}>
-          <Icon name="bars" size={20} color="#fff" />
-        </TouchableOpacity>
-        <Text style={{ color: "#fff", fontWeight: "bolder" }}>
-          Welcome, {`( User )`}
-        </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            width: "50px",
-            justifyContent: "space-between",
-          }}
-        >
-          <TouchableOpacity onPress={() => setModalVisible(true)}>
-            <Icon name="bell-o" color="#fff" size={20} />
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <Link href="/login" style={{ color: "#fff", fontWeight: "bolder" }}>
-              <MaterialIcons
-                name="logout"
-                color="#fff"
-                size={20}
-                style={{ marginTop: 3 }}
-              />
-            </Link>
-          </TouchableOpacity>
-        </View>
-      </View>
-
+      <Header />
       <MapView />
 
       <View style={styles.formContainer}>
@@ -77,6 +49,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ddd",
     padding: 5,
     marginBottom: 10,
+    overflow: "hidden",
   },
   header: {
     flexDirection: "row",
