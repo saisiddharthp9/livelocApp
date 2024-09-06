@@ -153,7 +153,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     backgroundColor: "#ddd",
-    padding: 5,
   },
   dropdown: {
     position: "absolute",

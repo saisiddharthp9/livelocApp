@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     // flexDirection: "column",
     justifyContent: "center",
     backgroundColor: "#ddd",
-    padding: 5,
+
     marginBottom: 10,
     overflow: "hidden",
   },

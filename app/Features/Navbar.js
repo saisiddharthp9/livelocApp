@@ -17,6 +17,9 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
   const navigateToSettings = () => {
     router.push("/Services/settings");
   };
+  const navigateToDistress = () => {
+    router.push("/Services/SOS");
+  };
 
   return (
     <Modal
@@ -43,9 +46,11 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
               Settings <Fontisto name="player-settings" size={20} />
             </Text>
           </TouchableOpacity>
-          <Link href="./SOS" style={styles.navItem}>
-            SOS <Foundation name="clipboard-notes" size={20} />
-          </Link>
+          <TouchableOpacity onPress={navigateToDistress}>
+            <Text style={styles.navItem}>
+              SOS <Foundation name="clipboard-notes" size={20} />
+            </Text>
+          </TouchableOpacity>
           <Link href="/help" style={styles.navItem}>
             Help
           </Link>
