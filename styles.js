@@ -1,4 +1,9 @@
 "use strict";
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({});
+module.exports = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#ddd",
+  },
+});
