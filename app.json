@@ -3,16 +3,11 @@
     "scheme": "acme",
     "web": {
       "bundler": "metro",
-      "favicon": "./app/Assets/Apocalypse.png",
-      "manifest": "./manifest.json"
+      "favicon": "./app/Assets/Apocalypse.png"
     },
-    "entryPoint": "./App.js",
     "plugins": ["expo-router"],
     "name": "livelocApp",
     "slug": "livelocapp",
-    "facebookAppId": "529598876172253",
-    "facebookDisplayName": "LiveLocApp",
-    "facebookAutoLogAppEvents": true,
     "extra": {
       "router": {
         "origin": false
