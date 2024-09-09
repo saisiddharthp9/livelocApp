@@ -1,11 +1,9 @@
 import { Text, View, StyleSheet } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/FontAwesome";
 import React, { useState } from "react";
-import { Link } from "expo-router";
-import { MaterialIcons } from "@expo/vector-icons";
 import MapView from "../Features/MapView";
-import { Pressable, Button } from "react-native";
+import { Button } from "react-native";
+import { Pressable } from "react-native";
 import Header from "../Features/Header";
 
 const conductorDashboard = () => {

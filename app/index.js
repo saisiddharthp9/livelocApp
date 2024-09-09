@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Link } from "expo-router";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export default function EntryPoint() {
   return (

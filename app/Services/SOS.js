@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Button } from "react-native";
 
 const s = require("../../styles");

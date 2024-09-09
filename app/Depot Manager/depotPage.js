@@ -9,3 +9,5 @@ const Depot = () => {
     </View>
   );
 };
+
+export default Depot;

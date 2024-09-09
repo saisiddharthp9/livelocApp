@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { View } from "react-native";
 import EntryPoint from "./app/index";
 
@@ -19,9 +19,5 @@ if ("serviceWorker" in navigator) {
 }
 
 export default function App() {
-  return (
-    <View>
-      <EntryPoint /> {/* Entry Point Component */}
-    </View>
-  );
+  return <EntryPoint />;
 }

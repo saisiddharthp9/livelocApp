@@ -6,9 +6,8 @@
       "favicon": "./app/Assets/Apocalypse.png",
       "manifest": "./manifest.json"
     },
-    "plugins": [
-      "expo-router"
-    ],
+    "entryPoint": "./App.js",
+    "plugins": ["expo-router"],
     "name": "livelocApp",
     "slug": "livelocapp",
     "facebookAppId": "529598876172253",
@@ -22,9 +21,6 @@
         "projectId": "1909530a-ddf7-4b73-94d8-45b45d399e0a"
       }
     },
-    "owner": "saisiddhp9",
-    "android": {
-      "package": "com.saisiddhp9.livelocapp"
-    }
+    "owner": "saisiddhp9"
   }
 }

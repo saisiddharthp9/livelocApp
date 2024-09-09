@@ -1,5 +1,5 @@
 import { View, StyleSheet, Dimensions } from "react-native";
-
+import { WebView } from "react-native-webview";
 import React from "react";
 
 // const MAPPLS_API_KEY = "c7850c2e067688d30e2fadcd4793935c";
@@ -37,9 +37,10 @@ const MapView = () => {
 
   return (
     <View style={styles.container}>
-      <iframe
-        src={`data:text/html,${encodeURIComponent(htmlContent)}`}
-        style={styles.iframe}
+      <WebView
+        originWhitelist={["*"]}
+        source={{ html: htmlContent }}
+        style={{ borderRadius: 10 }}
       />
     </View>
   );
@@ -50,12 +51,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
-  },
-  iframe: {
-    borderRadius: 10,
-    border: "1px solid black",
-    width: "100%",
-    height: "100%",
   },
 });
 
