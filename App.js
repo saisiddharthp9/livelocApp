@@ -19,5 +19,9 @@ if ("serviceWorker" in navigator) {
 }
 
 export default function App() {
-  return <EntryPoint />;
+  return (
+    <View>
+      <EntryPoint />
+    </View>
+  );
 }
