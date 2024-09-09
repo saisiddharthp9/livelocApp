@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, Alert } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { Picker } from "@react-native-picker/picker";
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

@@ -9,7 +9,6 @@ const MapView = () => {
     <!DOCTYPE html>
     <html>
     <head>
-      <title> Mappls Map</title>
       <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
       <style type="text/css">
         html, body, #map {
