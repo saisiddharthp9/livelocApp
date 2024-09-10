@@ -1,46 +1,40 @@
-import { View, StyleSheet, Dimensions } from "react-native";
-import { WebView } from "react-native-webview";
 import React from "react";
+import { View, StyleSheet, Platform } from "react-native";
+import { WebView } from "react-native-webview";
 
-// const MAPPLS_API_KEY = "c7850c2e067688d30e2fadcd4793935c";
-
-const MapView = () => {
-  const htmlContent = `
+const MapComponent = () => {
+  const mapHtml = `
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
     <head>
-      <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-      <style type="text/css">
-        html, body, #map {
-          height: 100%;
-          margin: 0;
-          padding: 0;
-        }
-      </style>
-      <script src="https://apis.mappls.com/advancedmaps/v1/c7850c2e067688d30e2fadcd4793935c/map_load?v=1.5"></script>
-      <script>
-        function initialize() {
-          var map = new mappls.Map('map', {
-            center: { lat: 28.7041, lng: 77.1025 },
-            zoom: 12,
-          });
-        }
-        window.onload = initialize;
-      </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mappls Map</title>
+        <script src="https://apis.mappls.com/advancedmaps/v1/c7850c2e067688d30e2fadcd4793935c/map_sdk?v=3.0&layer=vector"></script>
     </head>
     <body>
-      <div id="map"></div>
+        <div id="map" style="width: 100%; height: 100vh;"></div>
+        <script>
+            var map = new Mappls.Map("map", {
+                center: [77.1025, 28.7041],
+                zoom: 12
+            });
+        </script>
     </body>
     </html>
   `;
 
   return (
     <View style={styles.container}>
-      <WebView
-        originWhitelist={["*"]}
-        source={{ html: htmlContent }}
-        style={{ borderRadius: 10 }}
-      />
+      {Platform.OS === "web" ? (
+        <iframe srcDoc={mapHtml} style={styles.map} title="Mappls Map" />
+      ) : (
+        <WebView
+          originWhitelist={["*"]}
+          source={{ html: mapHtml }}
+          style={styles.map}
+        />
+      )}
     </View>
   );
 };
@@ -48,9 +42,11 @@ const MapView = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+  },
+  map: {
+    width: "100%",
+    height: "100%",
   },
 });
 
-export default MapView;
+export default MapComponent;

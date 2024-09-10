@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import React, { useState } from "react";
-import MapView from "../Features/MapView";
+import MapComponent from "../Features/MapView";
 import { Button } from "react-native";
 import { Pressable } from "react-native";
 import Header from "../Features/Header";
@@ -13,8 +13,7 @@ const conductorDashboard = () => {
   return (
     <View style={styles.pageContainer}>
       <Header />
-      <MapView />
-
+      <MapComponent />
       <View style={styles.formContainer}>
         <TextInput
           placeholder="Enter the Starting Point"

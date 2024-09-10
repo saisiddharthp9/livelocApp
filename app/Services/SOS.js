@@ -1,6 +1,7 @@
 import { Text, View } from "react-native";
 import React, { useState } from "react";
 import { StyleSheet, Button } from "react-native";
+import { Platform } from "react-native";
 
 const s = require("../../styles");
 
@@ -12,14 +13,7 @@ const Distress = () => {
       <View style={styles.title}>
         <Text>Distress Page</Text>
       </View>
-      <View style={styles.distressMsg}>
-        <Text>Tap the button below to trigger a distress call.</Text>
-        <Text>
-          <Button onClick={() => alert("Distress call triggered!")}>
-            Trigger Distress
-          </Button>
-        </Text>
-      </View>
+      <View></View>
     </View>
   );
 };
