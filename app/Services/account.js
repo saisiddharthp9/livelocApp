@@ -13,7 +13,7 @@ const Account = () => {
         <View style={styles.photo}></View>
       </View>
       <View>
-        <Text style={styles.details}>Userame :</Text>
+        <Text style={styles.details}>Username :</Text>
 
         <Text style={styles.details}>Email :</Text>
 
