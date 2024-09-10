@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "geo-tracking-app-b345f-c9ee1-7bd8f",
+    "public": "dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}

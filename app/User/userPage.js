@@ -82,19 +82,7 @@ const User = () => {
         />
 
         <Icon name="search" size={25} style={{ marginLeft: 10 }} />
-        {filteredData.length > 0 && (
-          <View style={styles.dropdown}>
-            <FlatList
-              data={filteredData}
-              renderItem={({ item }) => (
-                <TouchableOpacity onPress={() => handleSelectItem(item)}>
-                  <Text style={styles.item}>{item}</Text>
-                </TouchableOpacity>
-              )}
-              keyExtractor={(item) => item}
-            />
-          </View>
-        )}
+        {filteredData.length > 0 && <View style={styles.dropdown}></View>}
       </View>
       <br />
       <View style={styles.buttonContainer}>
