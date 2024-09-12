@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import Header from "../Features/Header";
-import MapView from "../Features/MapView";
+import MapComponent from "../Features/MapView";
 import { useRouter } from "expo-router";
 import { Button } from "react-native-web";
 
@@ -11,7 +11,7 @@ const Supplier = () => {
   return (
     <View style={styles.pageContainer}>
       <Header />
-      <MapView />
+      <MapComponent />
       <Button title="View Distress Calls" />
     </View>
   );

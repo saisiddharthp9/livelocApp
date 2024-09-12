@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
     // flexDirection: "column",
-    justifyContent: "center",
+
     backgroundColor: "#ddd",
 
     marginBottom: 10,

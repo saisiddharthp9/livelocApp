@@ -18,20 +18,31 @@ const MapComponent = () => {
   };
 
   useEffect(() => {
-    mapClassObject.initialize("--------Token-------", loadObject, () => {
-      const newMap = mapClassObject.Map({
-        id: "map",
-        properties: {
-          center: [28.633, 77.2194],
-          zoom: 4,
-        },
-      });
+    mapClassObject.initialize(
+      "c7850c2e067688d30e2fadcd4793935c",
+      loadObject,
+      () => {
+        const newMap = mapClassObject.Map({
+          id: "map",
+          properties: {
+            center: [28.633, 77.2194],
+            zoom: 4,
+          },
+        });
 
-      newMap.on("load", () => {
-        setMapLoaded(true);
-      });
-      mapRef.current = newMap;
-    });
+        // const markerObject = mapClassObject.marker({
+        //   map: mapClassObject,
+        //   position: { lat: 28.5512908, lng: 77.26809282 },
+        // });
+
+        // markerObject.setPosition({ lat: 28.454, lng: 77.5454 });
+
+        newMap.on("load", () => {
+          setMapLoaded(true);
+        });
+        mapRef.current = newMap;
+      }
+    );
     return () => {
       if (mapRef.current) {
         mapRef.current.remove();
@@ -40,13 +51,19 @@ const MapComponent = () => {
   }, []);
 
   return (
-    <View
-      id="map"
-      style={{ width: "100%", height: "99vh", display: "inline-block" }}
-    >
+    <View id="map" style={styles.map}>
       {isMapLoaded}
     </View>
   );
 };
 
 export default MapComponent;
+
+const styles = StyleSheet.create({
+  map: {
+    flex: 1,
+    margin: "auto",
+    width: "100%",
+    height: 90,
+  },
+});
