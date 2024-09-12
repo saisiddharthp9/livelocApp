@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
   map: {
     flex: 1,
     margin: "auto",
-    width: "100%",
+    borderRadius: 15,
+    width: "90%",
     height: 90,
   },
 });

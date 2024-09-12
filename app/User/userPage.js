@@ -3,16 +3,11 @@ import { Text, View, Button, StyleSheet } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Picker } from "@react-native-picker/picker";
-import mapboxgl from "mapbox-gl";
+import MapComponent from "../Features/MapView";
 import { useRouter } from "expo-router";
 import Header from "../Features/Header";
 
-mapboxgl.accessToken =
-  "pk.eyJ1Ijoic2Fpc2lkZGhwOSIsImEiOiJjbTA0eXJhc2cwN2ZoMmpwdjUwdXF5YmN1In0.NzOp3Qbvsq9rLE-7sXgDgw";
-
 const User = () => {
-  const mapContainer = useRef(null);
-
   const [selectedSource, setSelectedSource] = useState("");
   const [selectedDestination, setSelectedDestination] = useState("");
 
@@ -47,28 +42,11 @@ const User = () => {
 
   const router = useRouter();
 
-  useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [-122.4324, 37.78825], // Initial position [longitude, latitude]
-      zoom: 8,
-    });
-
-    const marker = new mapboxgl.Marker({ anchor: "center" })
-      .setLngLat([-122.4324, 37.78825]) // Position of the marker
-      .addTo(map);
-
-    map.resize();
-
-    return () => map.remove();
-  }, []);
-
   return (
     <View style={styles.pageContainer}>
       <Header />
       <br />
-      <View style={styles.mapContainer} ref={mapContainer}></View>
+      <MapComponent style={styles.mapContainer} />
 
       <View style={styles.searchbox}>
         <TextInput
@@ -157,9 +135,8 @@ const styles = StyleSheet.create({
     height: 300,
     width: "90%",
     margin: "auto",
-    borderRadius: 15,
+    borderRadius: 10,
     borderWidth: 1,
-    borderColor: "#ddd",
     shadowColor: "#000",
     overflow: "hidden",
     shadowOpacity: 0.2,
