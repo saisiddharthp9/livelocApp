@@ -1,51 +1,7 @@
-import React from "react";
-import { View, StyleSheet, Platform } from "react-native";
-import { WebView } from "react-native-webview";
+import React, { useState, useEffect, useRef } from "react";
+import { View, StyleSheet } from "react-native";
+import { mappls, mappls_plugin } from "mappls-web-maps";
 
-const MapComponent = () => {
-  const mapHtml = `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mappls Map</title>
-        <script src="https://apis.mappls.com/advancedmaps/v1/c7850c2e067688d30e2fadcd4793935c/map_sdk?layer=vector&v=3.0&callback=initMap1" defer async></script>
-    </head>
-    <body>
-        <div id="map" style="width: 100%; height: 100vh;margin:0;padding:0;"></div>
-        <script>
-                var map = new mappls.Map("map", {
-                center: [77.1025, 28.7041]
-            });
-        </script>
-    </body>
-    </html>
-  `;
-
-  return (
-    <View style={styles.container}>
-      {Platform.OS === "web" ? (
-        <iframe srcDoc={mapHtml} style={styles.map} title="Mappls Map" />
-      ) : (
-        <WebView
-          originWhitelist={["*"]}
-          source={{ html: mapHtml }}
-          style={styles.map}
-        />
-      )}
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  map: {
-    width: "100%",
-    height: "100%",
-  },
-});
+const MapComponent = () => {};
 
 export default MapComponent;

@@ -5,10 +5,7 @@
       "bundler": "metro",
       "favicon": "./app/Assets/Apocalypse.png"
     },
-    "plugins": [
-      "expo-router",
-      "expo-font"
-    ],
+    "plugins": ["expo-router", "expo-font"],
     "name": "livelocApp",
     "slug": "livelocapp",
     "extra": {
