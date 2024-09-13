@@ -136,7 +136,6 @@ const styles = StyleSheet.create({
     width: "90%",
     margin: "auto",
     borderRadius: 10,
-    borderWidth: 1,
     shadowColor: "#000",
     overflow: "hidden",
     shadowOpacity: 0.2,
