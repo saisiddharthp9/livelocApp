@@ -16,7 +16,16 @@ const Header = () => {
         <TouchableOpacity onPress={() => setNavbarVisible(true)}>
           <Icon name="bars" size={20} color="#fff" />
         </TouchableOpacity>
-
+        <Text
+          style={{
+            color: "#ffcc00",
+            fontSize: "15px",
+            fontWeight: "bold",
+            fontStyle: "Italic",
+          }}
+        >
+          BusTracker
+        </Text>
         <Text style={{ color: "#fff", fontWeight: "bolder" }}>
           Welcome, {`( User )`}
         </Text>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet, Button, Pressable } from "react-native";
 import { ToastProvider, useToast } from "react-native-toast-notifications";
 import Register from "../register";
+import { useRouter } from "expo-router";
 import { TextInput } from "react-native-gesture-handler";
 
 const s = require("../../styles");
@@ -12,6 +13,7 @@ const Account = () => {
   const [profileImage, setProfileImage] = useState(null);
 
   const toast = useToast();
+  const router = useRouter();
 
   // useEffect(() => {
   //   toast.show("Hello World");
@@ -20,7 +22,15 @@ const Account = () => {
   return (
     <ToastProvider>
       <View style={s.container}>
-        <View style={{ boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px" }}>
+        <View
+          style={{
+            boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
+            flexDirection: "row",
+          }}
+        >
+          <Pressable onPressIn={() => router.push("/User/userPage")}>
+            Go Back
+          </Pressable>
           <Text style={styles.title}>Account Profile</Text>
         </View>
         <View style={styles.photoContainer}>
@@ -34,7 +44,6 @@ const Account = () => {
           <Text style={styles.details}>Email : </Text>
 
           <Text style={styles.details}>Occupation : </Text>
-
           <Text style={styles.details}>
             Address : <TextInput placeholder="enter address...." />
           </Text>
