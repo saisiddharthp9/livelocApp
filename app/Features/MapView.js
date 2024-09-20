@@ -30,13 +30,6 @@ const MapComponent = () => {
           },
         });
 
-        // const markerObject = mapClassObject.marker({
-        //   map: mapClassObject,
-        //   position: { lat: 28.5512908, lng: 77.26809282 },
-        // });
-
-        // markerObject.setPosition({ lat: 28.454, lng: 77.5454 });
-
         newMap.on("load", () => {
           setMapLoaded(true);
         });

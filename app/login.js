@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { SafeAreaView, View, Text, StyleSheet, Alert } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import { Picker } from "@react-native-picker/picker";
+import { createClient } from "@supabase/supabase-js";
 import { CheckBox } from "react-native";
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Facebook from "expo-auth-session/providers/facebook";
