@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, View, Text, StyleSheet, Alert } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { createClient } from "@supabase/supabase-js";
 import { CheckBox } from "react-native";
@@ -101,7 +101,7 @@ export default function Login() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.formContainer}>
         <Text style={styles.title}>:: Login ::</Text>
         <br />
@@ -170,7 +170,7 @@ export default function Login() {
           </TouchableOpacity>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -182,8 +182,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   formContainer: {
-    border: "1px solid #25292e",
     borderRadius: 10,
+    boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
     padding: 20,
     width: "80%",
     alignItems: "center",

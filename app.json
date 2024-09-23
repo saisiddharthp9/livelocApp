@@ -7,7 +7,7 @@
     },
     "plugins": ["expo-router", "expo-font"],
     "name": "livelocApp",
-    "slug": "livelocapp",
+    "slug": "livelocApp",
     "extra": {
       "router": {
         "origin": false
@@ -16,6 +16,9 @@
         "projectId": "1909530a-ddf7-4b73-94d8-45b45d399e0a"
       }
     },
-    "owner": "saisiddhp9"
+    "owner": "saisiddhp9",
+    "android": {
+      "package": "com.saisiddhp9.livelocapp"
+    }
   }
 }
