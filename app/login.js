@@ -23,6 +23,7 @@ export default function Login() {
   const [fbRequest, fbResponse, fbPromptAsync] = Facebook.useAuthRequest({
     clientId: "529598876172253",
     responseType: ResponseType.Token,
+    permissions: ["public_profile", "email"],
   });
 
   //facebook login
