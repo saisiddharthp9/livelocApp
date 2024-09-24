@@ -6,11 +6,12 @@ import { Picker } from "@react-native-picker/picker";
 import MapComponent from "../Features/MapView";
 import { useRouter } from "expo-router";
 import Header from "../Features/Header";
+import * as Location from "expo-location";
 
 const User = () => {
   const [selectedSource, setSelectedSource] = useState("");
   const [selectedDestination, setSelectedDestination] = useState("");
-
+  const [location, setLocation] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 

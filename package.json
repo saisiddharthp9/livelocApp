@@ -28,7 +28,6 @@
     "expo-splash-screen": "~0.27.4",
     "expo-status-bar": "~1.12.1",
     "express": "^4.19.2",
-    "mapbox-gl": "^3.6.0",
     "mappls-web-maps": "^3.5.7",
     "mongodb": "^6.8.0",
     "react": "18.2.0",
@@ -44,7 +43,8 @@
     "react-native-web": "~0.19.6",
     "react-native-webview": "13.8.6",
     "socket.io": "^4.7.5",
-    "socket.io-client": "^4.7.5"
+    "socket.io-client": "^4.7.5",
+    "expo-location": "~17.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
