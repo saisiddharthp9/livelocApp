@@ -1,7 +1,7 @@
 import { Text, View, TextInput } from "react-native";
 import React, { useState } from "react";
 import { StyleSheet, Button } from "react-native";
-import { Platform } from "react-native";
+// import { Platform } from "react-native";
 
 const s = require("../../styles");
 
@@ -16,7 +16,12 @@ const Distress = () => {
       <View>
         <Text style={styles.distressMsg}>Enter distress message:</Text>
         <TextInput
-          style={{ height: 100, borderColor: "gray", borderWidth: 1 }}
+          style={{
+            height: 100,
+            width: 90,
+            borderColor: "gray",
+            borderWidth: 1,
+          }}
           multiline={true}
           onChangeText={(text) => setMessage(text)}
         />

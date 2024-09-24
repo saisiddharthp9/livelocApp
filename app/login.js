@@ -23,7 +23,7 @@ export default function Login() {
   const [fbRequest, fbResponse, fbPromptAsync] = Facebook.useAuthRequest({
     clientId: "529598876172253",
     responseType: ResponseType.Token,
-    permissions: ["public_profile", "email"],
+    // permissions: ["public_profile", "email"],
   });
 
   //facebook login
@@ -39,11 +39,14 @@ export default function Login() {
     await AsyncStorage.setItem("facebookAccessToken", accessToken);
 
     // Navigate based on role or directly to the user page
-    if (role == "User") {
-      router.push("/User/userPage");
-    } else if (role == "Conductor") {
-      router.push("Conductor/conductorPage");
-    }
+    router.push("/User/userPage");
+    // if (role == "User") {
+    //   router.push("/User/userPage");
+    // } else if (role == "Conductor") {
+    //   router.push("Conductor/conductorPage");
+    // } else if (role == "Depot Manager") {
+    //   router.push("Depot Manager/depotPage");
+    // }
   };
 
   const handleFacebookLogin = () => {
