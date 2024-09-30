@@ -20,6 +20,9 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
   const navigateToDistress = () => {
     router.push("/Services/SOS");
   };
+  const navigateToHelp = () => {
+    router.push("/Services/help");
+  };
 
   return (
     <Modal
@@ -51,9 +54,11 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
               SOS <Foundation name="clipboard-notes" size={20} />
             </Text>
           </TouchableOpacity>
-          <Link href="/help" style={styles.navItem}>
-            Help
-          </Link>
+          <TouchableOpacity onPress={navigateToHelp}>
+            <Text style={styles.navItem}>
+              Help <Foundation name="guide-dog" size={20} />
+            </Text>
+          </TouchableOpacity>
           <Text style={styles.navItem}>
             Share <Icon name="share-alt" size={20} />
           </Text>
