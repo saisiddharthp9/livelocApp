@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Button, Pressable } from "react-native";
+import { Text, View, StyleSheet, Button, Pressable, Image } from "react-native";
 import { ToastProvider, useToast } from "react-native-toast-notifications";
 import Register from "../register";
 import { useRouter } from "expo-router";
 import { TextInput } from "react-native-gesture-handler";
+import * as ImagePicker from "expo-image-picker";
 
 const s = require("../../styles");
 
@@ -14,6 +15,22 @@ const Account = () => {
 
   const toast = useToast();
   const router = useRouter();
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setProfileImage(result.assets[0].uri);
+    }
+  };
 
   // useEffect(() => {
   //   toast.show("Hello World");
@@ -28,13 +45,23 @@ const Account = () => {
             flexDirection: "row",
           }}
         >
-          <Pressable onPressIn={() => router.push("/User/userPage")}>
+          <Pressable
+            onPressIn={() => router.push("/User/userPage")}
+            style={{
+              justifyContent: "center",
+              fontWeight: "bold",
+            }}
+          >
             Go Back
           </Pressable>
           <Text style={styles.title}>Account Profile</Text>
         </View>
         <View style={styles.photoContainer}>
-          <View style={styles.photo}></View>
+          <View style={styles.photo}>
+            {profileImage && <Image source={{ uri: photo }} />}
+          </View>
+          <br />
+          <Button title="Pick an image from camera roll" onPress={pickImage} />
         </View>
         <View>
           <Text style={styles.details}>
@@ -73,11 +100,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   photo: {
-    border: "1px solid gray",
     borderRadius: 50,
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+    width: 200,
+    height: 200,
+    borderRadius: "50%",
     overflow: "hidden",
     marginLeft: 20,
     marginTop: 20,
