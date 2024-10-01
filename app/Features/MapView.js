@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
     margin: "auto",
     borderRadius: 10,
     width: "90%",
-    height: 90,
+    height: "99vh",
+    display: "inline-block",
   },
   loadingContainer: {
     flex: 1,
