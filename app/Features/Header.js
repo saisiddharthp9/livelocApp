@@ -5,6 +5,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { MaterialIcons } from "@expo/vector-icons";
 import Navbar from "../Features/Navbar";
+import Login from "../login";
 
 const Header = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -27,7 +28,7 @@ const Header = () => {
           BusTracker
         </Text>
         <Text style={{ color: "#fff", fontWeight: "bolder" }}>
-          Welcome, {`( User )`}
+          Welcome,User!{" "}
         </Text>
         <View
           style={{

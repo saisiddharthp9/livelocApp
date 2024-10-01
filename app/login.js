@@ -107,7 +107,8 @@ export default function Login() {
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
-        <Text style={styles.title}>:: Login ::</Text>
+        <Text style={styles.title}> Login to Enter</Text>
+        <br />
         <br />
         <View style={styles.inputContainer}>
           <Text style={styles.textlabel}>Email:</Text>
@@ -187,7 +188,8 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     borderRadius: 10,
-    boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
+    boxShadow:
+      "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
     padding: 20,
     width: "80%",
     alignItems: "center",
