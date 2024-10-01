@@ -47,21 +47,25 @@ const Account = () => {
         >
           <Pressable
             onPressIn={() => router.push("/User/userPage")}
-            style={{
-              justifyContent: "center",
-              fontWeight: "bold",
-            }}
+            style={{ justifyContent: "center" }}
           >
-            Go Back
+            <Text style={{ fontWeight: "bold" }}>Go Back </Text>
           </Pressable>
           <Text style={styles.title}>Account Profile</Text>
         </View>
         <View style={styles.photoContainer}>
           <View style={styles.photo}>
-            {profileImage && <Image source={{ uri: photo }} />}
+            {profileImage && <Image source={{ uri: profileImage }} />}
           </View>
           <br />
-          <Button title="Pick an image from camera roll" onPress={pickImage} />
+          <Pressable
+            onPress={pickImage}
+            style={{ backgroundColor: "black", borderRadius: 5 }}
+          >
+            <Text style={{ color: "white", padding: 5, fontWeight: "bold" }}>
+              Edit Image
+            </Text>
+          </Pressable>
         </View>
         <View>
           <Text style={styles.details}>
@@ -79,7 +83,13 @@ const Account = () => {
             Phone Number : <TextInput placeholder="enter phone no." />
           </Text>
           <br />
-          <Button title="Save" style={styles.button} />
+          <View style={{ alignItems: "center" }}>
+            <Pressable style={styles.button}>
+              <Text style={{ color: "white", padding: 5, fontWeight: "bold" }}>
+                Save
+              </Text>
+            </Pressable>
+          </View>
         </View>
       </View>
     </ToastProvider>
@@ -100,6 +110,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   photo: {
+    border: "1px solid gray",
     borderRadius: 50,
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
     width: 200,
@@ -118,7 +129,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   button: {
-    width: 50,
+    width: "50%",
     marginTop: 20,
+    borderRadius: 5,
+    backgroundColor: "black",
+    borderRadius: 5,
+    alignItems: "center",
   },
 });
