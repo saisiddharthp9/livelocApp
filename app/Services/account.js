@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Button, Pressable, Image } from "react-native";
+import React, { useState } from "react";
+import { Text, View, StyleSheet, Pressable, Image } from "react-native";
 import { ToastProvider, useToast } from "react-native-toast-notifications";
 import Register from "../register";
 import { useRouter } from "expo-router";
 import { TextInput } from "react-native-gesture-handler";
 import * as ImagePicker from "expo-image-picker";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 const s = require("../../styles");
 
@@ -43,16 +44,18 @@ const Account = () => {
           style={{
             boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px",
             flexDirection: "row",
-            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
+          <Text style={styles.title}>Account Profile</Text>
           <Pressable
             onPressIn={() => router.push("/User/userPage")}
-            style={{ justifyContent: "center" }}
+            style={{ justifyContent: "center", marginRight: 10 }}
           >
-            <Text style={{ fontWeight: "bold" }}>Go Back </Text>
+            <Text style={{ fontWeight: "bold" }}>
+              Go Back <AntDesign name="rightsquare" size={15} color="black" />
+            </Text>
           </Pressable>
-          <Text style={styles.title}>Account Profile</Text>
         </View>
         <View style={styles.photoContainer}>
           <View style={styles.photo}>
