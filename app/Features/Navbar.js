@@ -6,6 +6,7 @@ import React from "react";
 import { StyleSheet } from "react-native-web";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Fontisto, MaterialIcons } from "@expo/vector-icons";
+import Feather from "@expo/vector-icons/Feather";
 import { Foundation } from "@expo/vector-icons";
 
 const Navbar = ({ navbarVisible, setNavbarVisible }) => {
@@ -56,7 +57,7 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
           </TouchableOpacity>
           <TouchableOpacity onPress={navigateToHelp}>
             <Text style={styles.navItem}>
-              Help <Foundation name="guide-dog" size={20} />
+              Help <Feather name="help-circle" size={20} />
             </Text>
           </TouchableOpacity>
           <Text style={styles.navItem}>

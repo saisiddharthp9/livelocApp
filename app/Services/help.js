@@ -1,9 +1,9 @@
 import { View, Text } from "react-native";
 
-const help = () => {
+const Help = () => {
   <View>
     <Text>Help</Text>
   </View>;
 };
 
-export default help;
+export default Help;
