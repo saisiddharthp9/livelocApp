@@ -25,8 +25,8 @@ const Distress = () => {
           </Text>
         </Pressable>
       </View>
-      <View>
-        <Text style={styles.distressMsg}>Enter distress message:</Text>
+      <View style={styles.body}>
+        <Text style={styles.dtitle}>Enter Distress Message</Text>
         <TextInput
           style={{
             height: 150,
@@ -65,12 +65,21 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#25292e",
   },
-  distressMsg: {
+  dtitle: {
     padding: 10,
+    fontSize: 15,
+    letterSpacing: 1,
+    fontWeight: "bold",
+    marginLeft: 5,
   },
   submitbtn: {
-    padding: 5,
-    alignItems: "center",
+    padding: 10,
+    alignSelf: "flex-start",
     backgroundColor: "black",
+    borderRadius: 5,
+    margin: "auto",
+  },
+  body: {
+    alignItems: "center",
   },
 });

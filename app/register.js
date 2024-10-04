@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View, SafeAreaView, Alert } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { Picker } from "@react-native-picker/picker";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { supabase } from "../supabase";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -40,7 +41,7 @@ export default function Register() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View
         style={{
           border: "2px solid #25292e",
@@ -166,7 +167,7 @@ export default function Register() {
           </Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
