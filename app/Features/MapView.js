@@ -11,7 +11,7 @@ const MapComponent = () => {
 
   const loadObject = {
     map: true,
-    layer: "raster", // Optional Default Vector
+    layer: "vector", // Optional Default Vector
     version: "3.4", // // Optional, other version 3.5 also available with CSP headers
     libraries: ["polydraw"], //Optional for Polydraw and airspaceLayers
     plugins: ["direction"], // Optional for All the plugins
@@ -26,6 +26,7 @@ const MapComponent = () => {
           const newMap = mapClassObject.Map({
             id: "map",
             properties: {
+              container: "map",
               center: [28.544, 77.5454],
               zoom: 5,
               traffic: true,
@@ -37,6 +38,7 @@ const MapComponent = () => {
 
           newMap.on("load", () => {
             setMapLoaded(true);
+            addMarker(newMap);
           });
           mapRef.current = newMap;
         }
@@ -51,6 +53,18 @@ const MapComponent = () => {
       }
     };
   }, []);
+
+  const addMarker = (map) => {
+    if (isMapLoaded) {
+      const coordinates = [28.544, 77.5454];
+      const marker = new mapClassObject.Marker({
+        position: coordinates,
+        title: "New Marker",
+      })
+        .setLngLat(coordinates)
+        .addTo(map);
+    }
+  };
 
   return (
     <View id="map" style={styles.map}>
@@ -77,8 +91,9 @@ const styles = StyleSheet.create({
     display: "inline-block",
   },
   loadingContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: [{ translateX: -50 }, { translateY: -50 }],
   },
 });

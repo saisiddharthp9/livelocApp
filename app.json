@@ -1,6 +1,6 @@
 {
   "expo": {
-    "scheme": "acme",
+    "scheme": "livelocApp",
     "web": {
       "bundler": "metro",
       "favicon": "./app/Assets/Apocalypse.png"
