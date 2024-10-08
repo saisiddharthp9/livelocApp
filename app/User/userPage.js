@@ -12,7 +12,7 @@ const User = () => {
   const [selectedSource, setSelectedSource] = useState("");
   const [selectedDestination, setSelectedDestination] = useState("");
   // const [location, setLocation] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
   const data = [
@@ -32,12 +32,14 @@ const User = () => {
       );
       setFilteredData(filtered);
     } else {
-      setFilteredData([]);
+      setFilteredData(
+        data.filter((item) => item.toLowerCase().includes(item.toLowerCase))
+      );
     }
   };
 
   const handleSelectItem = (item) => {
-    setSearchQuery(item);
+    setSearchTerm(item);
     setFilteredData([]); // Hide the list after selection.
   };
 
@@ -56,12 +58,16 @@ const User = () => {
             padding: 5,
           }}
           placeholder="Search for Buses"
-          value={searchQuery}
+          value={searchTerm}
           onChangeText={handleSearch}
         />
 
         <Icon name="search" size={25} style={{ marginLeft: 10 }} />
-        {filteredData.length > 0 && <View style={styles.dropdown}></View>}
+        {filteredData.length > 0 && (
+          <View style={styles.dropdown}>
+            <Text key={item}>{item}</Text>
+          </View>
+        )}
       </View>
       <br />
       <View style={styles.buttonContainer}>
