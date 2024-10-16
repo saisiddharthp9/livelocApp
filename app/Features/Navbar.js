@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { Modal } from "react-native-web";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet } from "react-native-web";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -17,6 +17,9 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
   };
   const navigateToSettings = () => {
     router.push("/Services/settings");
+  };
+  const navigateToFavorites = () => {
+    router.push("/Services/favorites");
   };
   const navigateToDistress = () => {
     router.push("/Services/SOS");
@@ -45,9 +48,11 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
               Account Profile <Icon name="user" size={20} />
             </Text>
           </TouchableOpacity>
-          <Link href="/favorites" style={styles.navItem}>
-            Favorites <MaterialIcons name="stars" size={20} />
-          </Link>
+          <TouchableOpacity onPress={navigateToShare}>
+            <Text style={styles.navItem}>
+              Favorites <MaterialIcons name="stars" size={20} />
+            </Text>
+          </TouchableOpacity>
           <TouchableOpacity onPress={navigateToSettings}>
             <Text style={styles.navItem}>
               Settings <Fontisto name="player-settings" size={20} />
