@@ -24,6 +24,9 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
   const navigateToHelp = () => {
     router.push("/Services/help");
   };
+  const navigateToShare = () => {
+    router.push("/Services/share");
+  };
 
   return (
     <Modal
@@ -60,9 +63,11 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
               Help <Feather name="help-circle" size={20} />
             </Text>
           </TouchableOpacity>
-          <Text style={styles.navItem}>
-            Share <Icon name="share-alt" size={20} />
-          </Text>
+          <TouchableOpacity onPress={navigateToShare}>
+            <Text style={styles.navItem}>
+              Share <Icon name="share-alt" size={20} />
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>
