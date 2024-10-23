@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Text, View, Button, StyleSheet } from "react-native";
+import { Text, View, Button, StyleSheet, Pressable } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Picker } from "@react-native-picker/picker";
@@ -71,7 +71,9 @@ const User = () => {
       </View>
       <br />
       <View style={styles.buttonContainer}>
-        <Button title="View Bus Routes" />
+        <Pressable style={styles.button}>
+          <Text style={{ color: "white" }}>View Bus Routes</Text>
+        </Pressable>
       </View>
       <View style={styles.pickerContainer}>
         <View>
@@ -109,10 +111,14 @@ const User = () => {
       </View>
       <br />
       <View style={styles.buttonContainer}>
-        <Button
-          title="Confirm Booking"
-          onPress={() => router.push("/payment")}
-        />
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            router.push("../confirm");
+          }}
+        >
+          <Text style={{ color: "white" }}>Confirm Booking</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -143,11 +149,13 @@ const styles = StyleSheet.create({
     width: "90%",
     margin: "auto",
     borderRadius: 10,
-    shadowColor: "#000",
     overflow: "hidden",
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 5,
+  },
+  button: {
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: "black",
+    color: "white",
   },
   buttonContainer: {
     flexDirection: "row",
@@ -160,7 +168,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 20,
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: "black",
     borderRadius: 15,
     padding: 10,
     shadowColor: "#000",
