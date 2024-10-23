@@ -48,7 +48,7 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
               Account Profile <Icon name="user" size={20} />
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={navigateToShare}>
+          <TouchableOpacity onPress={navigateToFavorites}>
             <Text style={styles.navItem}>
               Favorites <MaterialIcons name="stars" size={20} />
             </Text>

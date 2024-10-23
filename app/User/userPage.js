@@ -54,12 +54,12 @@ const User = () => {
       <View style={styles.searchbox}>
         <TextInput
           style={{
-            width: "85%",
+            width: "100%",
             padding: 5,
           }}
           placeholder="Search for Buses"
           value={searchTerm}
-          onChangeText={handleSearch}
+          // onChangeText={handleSearch}
         />
 
         <Icon name="search" size={25} style={{ marginLeft: 10 }} />
@@ -72,7 +72,7 @@ const User = () => {
       <br />
       <View style={styles.buttonContainer}>
         <Pressable style={styles.button}>
-          <Text style={{ color: "white" }}>View Bus Routes</Text>
+          <Text style={styles.buttonText}>View Bus Routes</Text>
         </Pressable>
       </View>
       <View style={styles.pickerContainer}>
@@ -117,7 +117,7 @@ const User = () => {
             router.push("../confirm");
           }}
         >
-          <Text style={{ color: "white" }}>Confirm Booking</Text>
+          <Text style={styles.buttonText}>Confirm Booking</Text>
         </Pressable>
       </View>
     </View>
@@ -155,7 +155,10 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     backgroundColor: "black",
+  },
+  buttonText: {
     color: "white",
+    fontWeight: "bold",
   },
   buttonContainer: {
     flexDirection: "row",
@@ -166,10 +169,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    margin: 20,
+    margin: 10,
     borderWidth: 1,
     borderColor: "black",
-    borderRadius: 15,
+    borderRadius: 5,
     padding: 10,
     shadowColor: "#000",
     shadowOpacity: 0.1,

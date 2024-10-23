@@ -28,7 +28,7 @@ const Header = () => {
           BusTracker
         </Text>
         <Text style={{ color: "#fff", fontWeight: "bolder" }}>
-          Welcome,User!{" "}
+          Welcome , User!{" "}
         </Text>
         <View
           style={{
