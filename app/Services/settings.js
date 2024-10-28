@@ -1,13 +1,25 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
+import { useRouter } from "expo-router";
+import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 
 const Settings = () => {
+  const router = useRouter();
+
   return (
     <View style={styles.SettingContainer}>
       <View style={styles.headerContainer}>
         <Text style={{ fontSize: 20, fontWeight: "bold", color: "#25292e" }}>
           Settings{" "}
         </Text>
+        <Pressable
+          onPressIn={() => router.push("/User/userPage")}
+          style={{ justifyContent: "center", marginRight: 10 }}
+        >
+          <Text style={{ fontWeight: "bold" }}>
+            Go Back <AntDesign name="rightsquare" size={15} color="black" />
+          </Text>
+        </Pressable>
       </View>
       <View style={styles.bodyContainer}></View>
     </View>
@@ -23,6 +35,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#ddd",
   },
   headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     padding: 10,
     border: "1px solid #ddd",
     shadowOffset: 0,
