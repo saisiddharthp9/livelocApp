@@ -1,15 +1,25 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import React from "react";
 import Header from "./Features/Header";
-import { Link } from "expo-router";
+import { useRouter } from "expo-router";
 
 const confirmBooking = () => {
+  const router = useRouter();
+
   return (
     <View style={{ backgroundColor: "#ddd" }}>
       <Header />
       <View style={styles.container}>
         <Text>Booking confirmed!</Text>
-        <Link href="User/userPage">click to go back to your page</Link>
+        <Pressable
+          onPress={() => {
+            router.push("/User/userPage");
+          }}
+        >
+          <Text style={{ fontWeight: "bold", color: "blue" }}>
+            --{`>`}Click to go back
+          </Text>
+        </Pressable>
       </View>
     </View>
   );
