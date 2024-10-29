@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Alert } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import { createClient } from "@supabase/supabase-js";
 import { CheckBox } from "react-native";
 import { useRouter } from "expo-router";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -10,9 +9,6 @@ import * as Facebook from "expo-auth-session/providers/facebook";
 import { ResponseType } from "expo-auth-session";
 
 export default function Login() {
-  // const supabaseUrl = "https://rpbqpqhvxlmgxtvbzlnn.supabase.co";
-  // const supabaseKey = process.env.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwYnFwcWh2eGxtZ3h0dmJ6bG5uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjYxMjQyODYsImV4cCI6MjA0MTcwMDI4Nn0.-8wk0rPu-mehOwAdmoYgtPqlzv84n8ockeeh4Lkf4xA;
-  // const supabase = createClient(supabaseUrl, supabaseKey);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
