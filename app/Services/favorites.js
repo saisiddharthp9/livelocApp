@@ -11,7 +11,6 @@ export default favorites;
 
 const styles = StyleSheet.create({
   fcontainer: {
-    flex: 1,
     backgroundColor: "#ddd",
   },
 });
