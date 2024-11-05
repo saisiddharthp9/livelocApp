@@ -1,10 +1,19 @@
 import { Text, View, StyleSheet, Pressable } from "react-native";
+import {
+  Provider as PaperProvider,
+  DefaultTheme,
+  DarkTheme,
+} from "react-native-paper";
 import { useRouter } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 
 const Settings = () => {
   const router = useRouter();
+  const [isDark, setIsDark] = useState(false);
+  const toggleTheme = () => {
+    setIsDarkMode((prevState) => !prevState);
+  };
 
   return (
     <View style={styles.SettingContainer}>

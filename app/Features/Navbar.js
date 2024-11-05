@@ -1,9 +1,8 @@
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import { Modal } from "react-native-web";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useRouter } from "expo-router";
 import React from "react";
-import { StyleSheet } from "react-native-web";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Fontisto, MaterialIcons } from "@expo/vector-icons";
 import Feather from "@expo/vector-icons/Feather";
@@ -12,29 +11,14 @@ import { Foundation } from "@expo/vector-icons";
 const Navbar = ({ navbarVisible, setNavbarVisible }) => {
   const router = useRouter();
 
-  const navigateToAccount = () => {
-    router.push("/Services/account");
-  };
-  const navigateToSettings = () => {
-    router.push("/Services/settings");
-  };
-  const navigateToFavorites = () => {
-    router.push("/Services/favorites");
-  };
-  const navigateToDistress = () => {
-    router.push("/Services/SOS");
-  };
-  const navigateToHelp = () => {
-    router.push("/Services/help");
-  };
-  const navigateToShare = () => {
-    router.push("/Services/share");
+  const navigateTo = (path) => {
+    router.push(path);
   };
 
   return (
     <Modal
       animationType="slide"
-      transparent={true}
+      transparent
       visible={navbarVisible}
       onRequestClose={() => setNavbarVisible(false)}
     >
@@ -43,32 +27,32 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
           <TouchableOpacity onPress={() => setNavbarVisible(false)}>
             <Text style={styles.closeNavbar}>Close</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={navigateToAccount}>
+          <TouchableOpacity onPress={() => navigateTo("/Services/account")}>
             <Text style={styles.navItem}>
               Account Profile <Icon name="user" size={20} />
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={navigateToFavorites}>
+          <Pressable onPress={() => navigateTo("/Services/favorites")}>
             <Text style={styles.navItem}>
               Favorites <MaterialIcons name="stars" size={20} />
             </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={navigateToSettings}>
+          </Pressable>
+          <TouchableOpacity onPress={() => navigateTo("/Services/settings")}>
             <Text style={styles.navItem}>
               Settings <Fontisto name="player-settings" size={20} />
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={navigateToDistress}>
+          <TouchableOpacity onPress={() => navigateTo("/Services/SOS")}>
             <Text style={styles.navItem}>
               SOS <Foundation name="clipboard-notes" size={20} />
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={navigateToHelp}>
+          <TouchableOpacity onPress={() => navigateTo("/Services/help")}>
             <Text style={styles.navItem}>
               Help <Feather name="help-circle" size={20} />
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={navigateToShare}>
+          <TouchableOpacity onPress={() => navigateTo("/Services/share")}>
             <Text style={styles.navItem}>
               Share <Icon name="share-alt" size={20} />
             </Text>
