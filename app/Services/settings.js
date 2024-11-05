@@ -1,19 +1,22 @@
 import { Text, View, StyleSheet, Pressable } from "react-native";
-import {
-  Provider as PaperProvider,
-  DefaultTheme,
-  DarkTheme,
-} from "react-native-paper";
+// import {
+//   Provider as PaperProvider,
+//   DefaultTheme,
+//   DarkTheme,
+// } from "react-native-paper";
 import { useRouter } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
 
 const Settings = () => {
   const router = useRouter();
-  const [isDark, setIsDark] = useState(false);
-  const toggleTheme = () => {
-    setIsDarkMode((prevState) => !prevState);
-  };
+  // const [isDark, setIsDark] = useState(false);
+
+  // const toggleTheme = () => {
+  //   setIsDarkMode((prevState) => !prevState);
+  // };
+
+  // const theme = isDarkMode ? DarkTheme : DefaultTheme;
 
   return (
     <View style={styles.SettingContainer}>
@@ -30,7 +33,20 @@ const Settings = () => {
           </Text>
         </Pressable>
       </View>
-      <View style={styles.bodyContainer}></View>
+      <View style={styles.bodyContainer}>
+        <Text>Toggle Dark Mode</Text>
+      </View>
+      {/* <PaperProvider theme={theme}>
+        <View style={styles.container}>
+          <Text style={styles.text}>
+            {isDarkMode ? "Dark Mode" : "Light Mode"}
+          </Text>
+
+          <TouchableOpacity style={styles.button} onPress={toggleTheme}>
+            <Text style={styles.buttonText}>Toggle Theme</Text>
+          </TouchableOpacity>
+        </View>
+      </PaperProvider> */}
     </View>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import EntryPoint from "./app/index";
 import { StyleSheet } from "react-native";
+import { STRAPI_API_URL } from "@env";
 
 // if ("serviceWorker" in navigator) {
 //   window.addEventListener("load", () => {

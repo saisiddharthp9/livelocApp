@@ -154,10 +154,10 @@ const styles = StyleSheet.create({
   button: {
     padding: 10,
     borderRadius: 5,
-    backgroundColor: "black",
+    backgroundColor: "#25292e",
   },
   buttonText: {
-    color: "white",
+    color: "#ffcc00",
     fontWeight: "bold",
   },
   buttonContainer: {
