@@ -1,6 +1,6 @@
 import { Text, View, TextInput } from "react-native";
 import React, { useState } from "react";
-import { StyleSheet, Pressable } from "react-native";
+import { StyleSheet, Pressable, TouchableOpacity } from "react-native";
 // import { Platform } from "react-native";
 import { useRouter } from "expo-router";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -39,12 +39,12 @@ const Distress = () => {
           onChangeText={(text) => setMessage(text)}
         />
         <br />
-        <Pressable
+        <TouchableOpacity
           onPressIn={() => console.log("pressed!")}
           style={styles.submitbtn}
         >
           <Text style={{ color: "white", fontWeight: "bold" }}>Submit</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </View>
   );

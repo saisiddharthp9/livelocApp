@@ -32,11 +32,16 @@ const Navbar = ({ navbarVisible, setNavbarVisible }) => {
               Account Profile <Icon name="user" size={20} />
             </Text>
           </TouchableOpacity>
-          <Pressable onPress={() => navigateTo("/Services/favorites")}>
+          <TouchableOpacity
+            onPress={() => {
+              setNavbarVisible(false);
+              navigateTo("/Services/favorites");
+            }}
+          >
             <Text style={styles.navItem}>
               Favorites <MaterialIcons name="stars" size={20} />
             </Text>
-          </Pressable>
+          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigateTo("/Services/settings")}>
             <Text style={styles.navItem}>
               Settings <Fontisto name="player-settings" size={20} />

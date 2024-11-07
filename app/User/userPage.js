@@ -25,16 +25,14 @@ const User = () => {
   ];
 
   const handleSearch = (text) => {
-    setSearchQuery(text);
+    setSearchTerm(text);
     if (text) {
       const filtered = data.filter((item) =>
         item.toLowerCase().includes(text.toLowerCase())
       );
       setFilteredData(filtered);
     } else {
-      setFilteredData(
-        data.filter((item) => item.toLowerCase().includes(item.toLowerCase))
-      );
+      setFilteredData([]);
     }
   };
 
@@ -59,13 +57,25 @@ const User = () => {
           }}
           placeholder="Search for Buses"
           value={searchTerm}
-          // onChangeText={handleSearch}
+          onChangeText={handleSearch}
         />
 
         <Icon name="search" size={25} style={{ marginLeft: 10 }} />
         {filteredData.length > 0 && (
           <View style={styles.dropdown}>
-            <Text key={item}>{item}</Text>
+            {filteredData.map(
+              (
+                item // Added map function
+              ) => (
+                <Pressable
+                  key={item}
+                  onPress={() => handleSelectItem(item)}
+                  style={styles.dropdownItem}
+                >
+                  <Text>{item}</Text>
+                </Pressable>
+              )
+            )}
           </View>
         )}
       </View>
@@ -138,11 +148,24 @@ const styles = StyleSheet.create({
     top: 45, // Adjust based on input height
     left: 0,
     right: 0,
-    backgroundColor: "white",
+    backgroundColor: "#ddd",
     borderWidth: 1,
     borderColor: "black",
     borderRadius: 5,
-    zIndex: 1,
+    zIndex: 999,
+    elevation: 5,
+    shadowColor: "#000", // Added shadow for better visibility
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  dropdownItem: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
   },
   mapContainer: {
     height: 200,

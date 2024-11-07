@@ -39,6 +39,7 @@ const MapComponent = () => {
           newMap.on("load", () => {
             setMapLoaded(true);
             addMarker(newMap);
+            // simulateVehicleMovement(newMap);
           });
           mapRef.current = newMap;
         }
