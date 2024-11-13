@@ -53,7 +53,7 @@ const User = () => {
         <TextInput
           style={{
             width: "100%",
-            padding: 5,
+            padding: 3,
           }}
           placeholder="Search for Buses"
           value={searchTerm}
@@ -192,8 +192,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    width: "80%",
     margin: 20,
-    borderWidth: 1,
+    marginLeft: 120,
+    borderWidth: 2,
     borderColor: "black",
     borderRadius: 15,
     padding: 10,
