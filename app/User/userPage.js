@@ -6,7 +6,7 @@ import { Picker } from "@react-native-picker/picker";
 import MapComponent from "../Features/MapView";
 import { useRouter } from "expo-router";
 import Header from "../Features/Header";
-// import * as Location from "expo-location";
+import axios from "axios";
 
 const User = () => {
   const [selectedSource, setSelectedSource] = useState("");
@@ -14,6 +14,7 @@ const User = () => {
   // const [location, setLocation] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [busRoutes, setBusRoutes] = useState([]);
 
   const data = [
     "Bus 101",
@@ -42,6 +43,19 @@ const User = () => {
   };
 
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchBusRoutes = async () => {
+      const response = await axios.get(
+        "http://localhost:1337/admin/content-manager/collection-types/api::bus-route.bus-route"
+      );
+      const data = response.data;
+      console.log(data);
+      setBusRoutes(data);
+    };
+
+    fetchBusRoutes();
+  }, []);
 
   return (
     <View style={styles.pageContainer}>

@@ -7,6 +7,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Facebook from "expo-auth-session/providers/facebook";
 import { ResponseType } from "expo-auth-session";
+import axios from "axios";
 
 export default function Login() {
   const [email, setEmail] = useState("");

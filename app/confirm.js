@@ -16,6 +16,7 @@ const confirmBooking = () => {
             router.push("/User/userPage");
           }}
         >
+          <br />
           <Text style={{ fontWeight: "bold", color: "blue" }}>
             --{`>`}Click to go back
           </Text>
