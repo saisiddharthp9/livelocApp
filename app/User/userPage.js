@@ -1,11 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Text, View, Button, StyleSheet, Pressable } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
+import {
+  Text,
+  View,
+  Button,
+  StyleSheet,
+  Pressable,
+  TextInput,
+} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Picker } from "@react-native-picker/picker";
 import MapComponent from "../Features/MapView";
 import { useRouter } from "expo-router";
 import Header from "../Features/Header";
+import BusRoutesModal from "../Features/BusRoutes";
 import axios from "axios";
 
 const User = () => {
@@ -14,9 +21,10 @@ const User = () => {
   // const [location, setLocation] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [isModalVisible, setModalVisible] = useState(false);
   const [busRoutes, setBusRoutes] = useState([]);
 
-  const data = [
+  const busData = [
     "Bus 101",
     "Bus 102",
     "Bus 103",
@@ -28,7 +36,7 @@ const User = () => {
   const handleSearch = (text) => {
     setSearchTerm(text);
     if (text) {
-      const filtered = data.filter((item) =>
+      const filtered = busData.filter((item) =>
         item.toLowerCase().includes(text.toLowerCase())
       );
       setFilteredData(filtered);
@@ -46,12 +54,14 @@ const User = () => {
 
   useEffect(() => {
     const fetchBusRoutes = async () => {
-      const response = await axios.get(
-        "http://localhost:1337/admin/content-manager/collection-types/api::bus-route.bus-route"
-      );
-      const data = response.data;
-      console.log(data);
-      setBusRoutes(data);
+      try {
+        const response = await axios.get(
+          "http://localhost:1337/admin/content-manager/collection-types/api::bus-route.bus-route"
+        );
+        setBusRoutes(response.data.data);
+      } catch (error) {
+        console.error("Error Fetching Bus Routes!", error);
+      }
     };
 
     fetchBusRoutes();
@@ -60,7 +70,8 @@ const User = () => {
   return (
     <View style={styles.pageContainer}>
       <Header />
-      <br />
+      <View style={{ height: 10 }} />
+
       <MapComponent style={styles.mapContainer} />
 
       <View style={styles.searchbox}>
@@ -93,23 +104,21 @@ const User = () => {
           </View>
         )}
       </View>
-      <br />
+      <View style={{ height: 10 }} />
+
       <View style={styles.buttonContainer}>
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
           <Text style={styles.buttonText}>View Bus Routes</Text>
         </Pressable>
       </View>
+      <BusRoutesModal
+        isModalVisible={isModalVisible}
+        busRoutes={busRoutes}
+        onClose={() => setModalVisible(false)}
+      />
       <View style={styles.pickerContainer}>
         <View>
-          <Text
-            style={{
-              color: "#25292e",
-              fontSize: "15px",
-              fontWeight: "bold",
-            }}
-          >
-            From:
-          </Text>
+          <Text style={styles.pickerLabel}>From:</Text>
           <Picker>
             <Picker.Item label="Select Source" value="" />
             <Picker.Item label="City 1" value="city2" />
@@ -117,15 +126,7 @@ const User = () => {
           </Picker>
         </View>
         <View>
-          <Text
-            style={{
-              color: "#25292e",
-              fontSize: "15px",
-              fontWeight: "bold",
-            }}
-          >
-            To:
-          </Text>
+          <Text style={styles.pickerLabel}>To:</Text>
           <Picker>
             <Picker.Item label="Select Source" value="" />
             <Picker.Item label="City 3" value="city3" />
@@ -133,7 +134,8 @@ const User = () => {
           </Picker>
         </View>
       </View>
-      <br />
+      <View style={{ height: 10 }} />
+
       <View style={styles.buttonContainer}>
         <Pressable
           style={styles.button}
@@ -224,5 +226,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     flexDirection: "row",
     padding: 10,
+  },
+  pickerLabel: {
+    color: "#25292e",
+    fontSize: 15,
+    fontWeight: "bold",
   },
 });
