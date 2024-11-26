@@ -26,12 +26,12 @@ const BusRoutesModal = ({ isModalVisible, busRoutes, onClose }) => {
               <Text style={styles.routeText}>
                 Route: {item.attributes.name}
               </Text>
-              <Text style={styles.routeText}>
+              {/* <Text style={styles.routeText}>
                 Source: {item.attributes.source}
               </Text>
               <Text style={styles.routeText}>
                 Destination: {item.attributes.destination}
-              </Text>
+              </Text> */}
             </View>
           )}
         />
@@ -48,7 +48,7 @@ export default BusRoutesModal;
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#ddd",
     margin: 20,
     borderRadius: 10,
     padding: 20,

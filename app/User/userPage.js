@@ -1,12 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import {
-  Text,
-  View,
-  Button,
-  StyleSheet,
-  Pressable,
-  TextInput,
-} from "react-native";
+import React, { useState, useEffect } from "react";
+import { Text, View, StyleSheet, Pressable, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Picker } from "@react-native-picker/picker";
 import MapComponent from "../Features/MapView";
@@ -56,11 +49,27 @@ const User = () => {
     const fetchBusRoutes = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1337/admin/content-manager/collection-types/api::bus-route.bus-route"
+          "http://localhost:1337/api/bus-routes",
+          {
+            headers: {
+              Authorization:
+                "01ae192cc4c9e5cbc5df86a348dfd06ddc1494a215060e0598e541ce0d0ee8c6602789569928d813d0661215831d9109bc6a4e481aec219b069d53e81ceb00150304f2ed64272abf2da1b093e69402f3eb7b84cb0f9689c839531d1c6eaf7f228f90d6ee4b066b3399047e7a87237b1081aca13a5de483b0bf48eb7f038047d8",
+            },
+
+            params: {
+              pagination: { page: 1, pageSize: 10 },
+              sort: ["id:asc"],
+              locale: "en",
+            },
+          }
         );
         setBusRoutes(response.data.data);
+        console.log(response.data.data);
       } catch (error) {
-        console.error("Error Fetching Bus Routes!", error);
+        console.error(
+          "Error Fetching Bus Routes:",
+          error.response || error.message
+        );
       }
     };
 
@@ -111,6 +120,7 @@ const User = () => {
           <Text style={styles.buttonText}>View Bus Routes</Text>
         </Pressable>
       </View>
+
       <BusRoutesModal
         isModalVisible={isModalVisible}
         busRoutes={busRoutes}
