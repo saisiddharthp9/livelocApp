@@ -31,6 +31,8 @@ export default function Login() {
     }
   }, [fbResponse]);
 
+  useEffect(() => {});
+
   const handleFacebookLoginSuccess = async (accessToken) => {
     console.log("Facebook login successful. Access Token:", accessToken);
     await AsyncStorage.setItem("facebookAccessToken", accessToken);

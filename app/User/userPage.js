@@ -53,14 +53,17 @@ const User = () => {
           {
             headers: {
               Authorization:
-                "01ae192cc4c9e5cbc5df86a348dfd06ddc1494a215060e0598e541ce0d0ee8c6602789569928d813d0661215831d9109bc6a4e481aec219b069d53e81ceb00150304f2ed64272abf2da1b093e69402f3eb7b84cb0f9689c839531d1c6eaf7f228f90d6ee4b066b3399047e7a87237b1081aca13a5de483b0bf48eb7f038047d8",
+                "d0fc6387e0b8e3fb38517e58ad0a8378139f0d91fe61d20879223097d65ed8099ee8c04efb660073f130a487e20e87ae0374bfb5e967f8be4e6c278689404fe1951bc3b651007eba9e76f64753bf4f1efa53a43f18bdde5d7b8a54da2e24abe86ca62671e538ede24b8c0fe3f0f79858ec087fd271057704948cccbd3f01b2a6",
             },
 
-            params: {
-              pagination: { page: 1, pageSize: 10 },
-              sort: ["id:asc"],
-              locale: "en",
-            },
+            // params: {
+            //   populate: "*", // Fetch all related data
+            //   sort: "id:asc", // Sort by ID in ascending order
+            //   pagination: {
+            //     page: 1,
+            //     pageSize: 10, // Adjust based on your needs
+            //   },
+            // },
           }
         );
         setBusRoutes(response.data.data);
