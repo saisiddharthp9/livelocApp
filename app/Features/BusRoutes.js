@@ -31,9 +31,9 @@ const BusRoutesModal = ({ isModalVisible, busRoutes, onClose }) => {
               keyExtractor={(item) => item.id.toString()}
               renderItem={({ item }) => (
                 <View style={styles.routeItem}>
-                  <Text style={styles.routeText}>Route: {item.Route}</Text>
+                  <Text style={styles.routeText}>Route Id: {item.Route}</Text>
                   <Text style={styles.routeText}>
-                    From: {item.From || "N/A"} - To: {item.To || "N/A"}
+                    Route Name: {item.From || "N/A"} - {item.To || "N/A"}
                   </Text>
                   <Text style={styles.routeText}>
                     Duration: {item.Duration || "N/A"}
