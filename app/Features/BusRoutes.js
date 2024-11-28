@@ -41,18 +41,18 @@ const BusRoutesModal = ({ isModalVisible, busRoutes, onClose }) => {
                   <Text style={styles.routeText}>
                     Conductor: {item.Conductor || "N/A"}
                   </Text>
-                  {item.Destinations && item.Destinations.length > 0 && (
+                  {/* {item.Destinations && item.Destinations.length > 0 && (
                     <View style={styles.destinationsContainer}>
                       <Text style={styles.destinationsTitle}>
                         Destinations:
                       </Text>
                       {item.Destinations.map((dest) => (
                         <Text key={dest.id} style={styles.destinationText}>
-                          - {dest.name}: {dest.description}
+                          --{dest.name}: {dest.description}
                         </Text>
                       ))}
                     </View>
-                  )}
+                  )} */}
                 </View>
               )}
             />
